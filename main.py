@@ -5,7 +5,7 @@ import json
 def main() :
     ps_output = subprocess.check_output(["ps", "ax", "--sort=-pcpu"]).decode("utf-8")
     response = ollama.chat(
-    model='qwen3.5:0.8b',
+    model='qwen3.5:2b',
     messages=[{
         'role': 'system',
         'content': 'あなたは優秀な熟練のインフラエンジニアです。以下の指示にしたがってください。 \
@@ -18,7 +18,7 @@ def main() :
         'role': 'user',
         'content': f'以下のログを確認し、不審なプロセスやユーザーがいないか確認してください。\nps axの結果: {ps_output}'
     }],
-    think=False,
+    think=True,
     format='json'
     )
 
